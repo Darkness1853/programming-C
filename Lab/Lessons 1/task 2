@@ -1,0 +1,14 @@
+    printf("Максимальное значение для unsigned int: %u\n", maxUT);
+
+    unsigned int over1 = maxUT + 1; // Добавляем 1
+    printf("Результат maxUnsignedInt + 1: %u\n", over1); // Печатаем резуль>//signed char           От -128 до 127
+//unsigned char         От 0 до 255
+    // Для char
+    char minChar = CHAR_MIN; // Минимальное значение для char
+    printf("Минимальное значение для char: %d\n", (int)minChar); // Печатае>
+
+    char overflowChar = minChar - 1; // Вычитаем 1
+    printf("Результат minChar - 1: %d\n", (int)overflowChar); // Печатаем р>
+
+    return 0;
+}
