@@ -1,19 +1,18 @@
 #include<stdio.h>
 int main() {
-    int n;
+    int a;
     printf("Введите целое число: ");
-    // Проверка корректности ввода
-    if (scanf("%u", &n) != 1) {
-        printf("Ошибка: Введите целое и неотрицательное число.\n");
-        return 1;
-    }
-    printf("\nЧетные индексы: ");
+    scanf("%d", &a);
+
+    printf("Четные индексы: ");
     for (int i = 0; i < 32; i += 2) {
-        printf("%d", (n >> i) & 1);
+        printf("%d", (a >> i) & 1);
     }
+
     printf("\nНечетные индексы: ");
     for (int i = 1; i < 32; i += 2) {
-        printf("%d", (n >> i) & 1);
+        printf("%d", (a >> i) & 1);
     }
+
     return 0;
 }
