@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/task1.dir/src/main.c.o -o task1  background/libbackground.a pipes/libpipes.a 
