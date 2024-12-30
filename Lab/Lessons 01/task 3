@@ -1,0 +1,32 @@
+/*#include <stdio.h>
+
+int main() {
+
+        char ch =63;
+        unsigned char uch = 'r';
+        short j = 'b'; //Нельзя назначать j и k в одну строку("b")
+        short k = 99;// т.к. k - число соответствует букве ("c")
+        //short предназначен для хранения целыx
+        // чисел. Диапазон чисел от -32 768 до 32 767
+
+        printf("%c == %d\n", ch,ch);
+        printf("%c == %d\n",uch,uch);
+        printf("%c,%c\n",j,k);
+
+        return 0;
+}
+*/
+#include <stdio.h>
+int main() {
+
+        char ch ;
+        unsigned char uch ;
+        short j,k;//`%hd` для считывания значения типа `short`.
+        printf("Введите символ (char), символ (unsigned char), короткое целое целое число (short), короткое целое число (short): ");
+        scanf(" %c,%c,%hd,%hd", &ch,&uch,&j,&k);
+        //пробел перед %c для игнорирования пробелов
+        printf("ASCII код:%c == %d\n", ch, ch);//программа выведет каждый  символ и его ASCII код 
+        printf("ASCII код:%c == %d\n", uch, uch);
+        printf("символ значения `short`:%hd, %hd\n", j, k);//символ соответвующий значению `short`.          
+        return 0;
+}
