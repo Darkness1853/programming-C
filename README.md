@@ -5,4 +5,4 @@
 
 
 ![GIF](https://github.com/Darkness1853/Pictures/blob/main/bongo-cat-typing.gif)
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Darkness1853&exclude=C++)](https://github.com/anuraghazra/github-readme-stats)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=Darkness1853&exclude=C%2B%2B)](https://github.com/anuraghazra/github-readme-stats)
