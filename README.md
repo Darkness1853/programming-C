@@ -4,5 +4,5 @@
 <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&width=435&lines=We+are+making+the+future+better." alt="Typing SVG" /></a>
 
 ![GIF](https://github.com/Darkness1853/Pictures/blob/main/bongo-cat-typing.gif)
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra)](https://github.com/anuraghazra/github-readme-stats)
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra)](https://github.com/Darkness1853/github-readme-stats)
 
