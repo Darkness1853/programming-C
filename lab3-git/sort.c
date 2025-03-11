@@ -11,3 +11,9 @@ void bubbleSort(int arr[], int n) {
         }
     }
 }
+int main() {
+    int arr[] = {4, 2, 0,4,6,8,67};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    bubbleSort(arr, n);
+    return 0;
+}
