@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.10)
+project(Array)
+
+option(BUILD_STATIC "Создать статическую библиотеку" ON) 
+option(BUILD_SHARED "Создать динамическую библиотеку" OFF) 
+
+if(BUILD_STATIC)
+    add_library(array STATIC func_arr.c sort.c)
+    message(STATUS "Собираем статическую библиотеку")
+else
+    add_library(array SHARED func_arr.c sort.c)
+    message(STATUS "Собираем статическую библиотеку")
+endif()
+
+add_executable(main main.c)
+target_link_libraries(main array)
+
+m
+
+gcc main.c -lm -o main.c

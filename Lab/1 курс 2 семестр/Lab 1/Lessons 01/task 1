@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#define N 10
+#define RED "\033[1;31m"
+#define RESET "\033[0m"
+struct Student {
+    char NameStudent[65];
+    int Math;
+    int Art;      
+    int Informatics; 
+    int Totalscore;
+};
+
+struct Student addStudent(const char *name, int math, int art, int informatics) {
+    struct Student newStudent;
+    strncpy(newStudent.NameStudent, name, 64); 
+
+    newStudent.Math = math;
+    newStudent.Art = art;
+    newStudent.Informatics = informatics;
+    newStudent.Totalscore = math + art + informatics;
+    return newStudent;
+}
+
+void printStudentInfo(struct Student student) {
+    printf("Имя студента: %s\n", student.NameStudent);
+    printf("Баллы по математике: %d\n", student.Math);
+    printf("Баллы по информатике: %d\n", student.Informatics);
+    printf("Баллы по искусству: %d\n", student.Art);
+    printf("Количество баллов по трем предметам: %s %d %s %s\n",RED, student.Totalscore,RED,RESET);
+}
+
+void selectionSort(struct Student arr[], int n) {
+    int i, j, maxIndex;
+    struct Student temp;
+    for (i = 0; i < n - 1; i++) {
+        maxIndex = i;
+        for (j = i + 1; j < n; j++) {
+            if (arr[j].Totalscore > arr[maxIndex].Totalscore) {
+                maxIndex = j;
+            }
+        }
+        temp = arr[maxIndex];
+        arr[maxIndex] = arr[i];
+        arr[i] = temp;
+    }
+}
+
+int main() {
+    struct Student students[N];
+    srand(time(NULL)); 
+    char end[]= "Конец";
+    for (int i = 0; i < N; i++) {
+        char name[64];
+        sprintf(name, "Student %d", i + 1);
+        int math = rand() % 101;
+        int art = rand() % 101;
+        int informatics = rand() % 101;
+        students[i] = addStudent(name, math, art, informatics);
+    }
+    printf("Студенты до сортировки:\n");
+    for (int i = 0; i < N; i++) {
+        printStudentInfo(students[i]);
+        printf("\n");
+    }
+    printf("-------------------------------------- \033[31m%s\033[0m\n", end);
+    selectionSort(students, N);
+    printf("Студенты после сортировки:\n");
+    for (int i = 0; i < N; i++) {
+        printStudentInfo(students[i]);
+        printf("\n");
+    }
+
+    return 0;
+}
