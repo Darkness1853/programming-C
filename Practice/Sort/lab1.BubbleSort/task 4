@@ -37,18 +37,18 @@ void generateRandomArray(int arr[], int n) {
 
 void generateSortedArray(int arr[], int n) {
     for (int i = 0; i < n; i++) {
-        arr[i] = i; 
+        arr[i] = i; // возрастающий массив
     }
 }
 
 void generateReverseSortedArray(int arr[], int n) {
     for (int i = 0; i < n; i++) {
-        arr[i] = n - i - 1; 
+        arr[i] = n - i - 1; // убывающий массив
     }
 }
 
 int main() {
-    srand(time(NULL)); 
+    srand(time(NULL)); // случайные числа
 
     int sizes[] = {100, 200, 300, 400, 500};
     printf("+-------+---------------+---------------+---------------+---------------+\n");
@@ -62,28 +62,19 @@ int main() {
         // Убывающий массив
         generateReverseSortedArray(arr_reverse, n);
         int comparisons, swaps;
-        clock_t start = clock();
         bubbleSort(arr_reverse, n, &comparisons, &swaps);
-        clock_t end = clock();
-        double time_taken_reverse = ((double)(end - start)) / CLOCKS_PER_SEC;
         int checksum_reverse = calculateChecksum(arr_reverse, n);
         printf("|  %d \t|\t%d\t|\t%d\t|\t", n, 4*(n * (n - 1)) / 2, 4*(n * (n - 1)) / 2);
 
         // Случайный массив
         generateRandomArray(arr, n);
-        start = clock();
         bubbleSort(arr, n, &comparisons, &swaps);
-        end = clock();
-        double time_taken_random = ((double)(end - start)) / CLOCKS_PER_SEC;
         int checksum_random = calculateChecksum(arr, n);
         printf("%d\t|\t", swaps+comparisons);
 
         // Возрастающий массив
         generateSortedArray(arr_copy, n);
-        start = clock();
         bubbleSort(arr_copy, n, &comparisons, &swaps);
-        end = clock();
-        double time_taken_sorted = ((double)(end - start)) / CLOCKS_PER_SEC;
         int checksum_sorted = calculateChecksum(arr_copy, n);
         printf("%d\t|\n", swaps+comparisons);
         printf("+-------+---------------+---------------+---------------+---------------+\n");
