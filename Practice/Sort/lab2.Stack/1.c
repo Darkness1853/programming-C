@@ -1,293 +1,246 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#define N 10
 
-typedef struct StackElement {
-    int value;
-    struct StackElement* next;
-} StackElement;
+typedef struct tData
+{
+    struct tData *next;
+    int data;
+} tData;
 
-typedef struct QueueElement {
-    int value;
-    struct QueueElement* next;
-} QueueElement;
 
-typedef struct {
-    QueueElement* front;
-    QueueElement* rear;
-} Queue;
-
-typedef struct ListElement {
-    int value;
-    struct ListElement* next;
-} ListElement;
-
-void addToStack(StackElement** head, int value) {
-    StackElement* newElement = (StackElement*)malloc(sizeof(StackElement));
-    newElement->value = value;
-    newElement->next = *head;
-    *head = newElement;
+void AddToStack(tData** head, int data)
+{
+    tData* p = (tData*)malloc(sizeof(tData));
+    p->data = data;
+    p->next = *head;
+    *head = p;
 }
 
-int removeFromStack(StackElement** head) {
-    if (*head == NULL) return -1;
-    StackElement* temp = *head;
-    int value = temp->value;
-    *head = (*head)->next;
-    free(temp);
-    return value;
-}
 
-void createAscendingStack(StackElement** head, int size) {
-    for (int i = size; i >= 1; i--) {
-        addToStack(head, i);
+void fillIncStack(tData **head, int n)
+{
+    for (int i = 1; i <= n; i++)
+    {
+        AddToStack(head, i);
     }
 }
 
-void createDescendingStack(StackElement** head, int size) {
-    for (int i = 1; i <= size; i++) {
-        addToStack(head, i);
+
+void fillDecStack(tData** head, int n)
+{
+    for (int i = n; i >= 1; i--)
+    {
+        AddToStack(head, i);
     }
 }
 
-void createRandomStack(StackElement** head, int size, int min, int max) {
+void fillRanStack(tData** head, int n)
+{
     srand(time(NULL));
-    for (int i = 0; i < size; i++) {
-        int num = min + rand() % (max - min + 1);
-        addToStack(head, num);
+    for (int i = 1; i <= n; i++)
+    {
+        int ranNum = rand() % 100;
+        AddToStack(head, ranNum);
     }
 }
 
-void addToQueue(Queue* q, int value) {
-    QueueElement* newElement = (QueueElement*)malloc(sizeof(QueueElement));
-    newElement->value = value;
-    newElement->next = NULL;
-    if (q->rear == NULL) {
-        q->front = q->rear = newElement;
-    } else {
-        q->rear->next = newElement;
-        q->rear = newElement;
+
+void AddToQueue(tData** head, tData** tail, int data)
+{
+    tData *p = (tData *)malloc(sizeof(tData));
+    p->data = data;
+    p->next = NULL;
+
+    if (*tail == NULL)
+    {
+        *head = *tail = p;
+    }
+    else
+    {
+        (*tail)->next = p;
+        *tail = p;
     }
 }
 
-int removeFromQueue(Queue* q) {
-    if (q->front == NULL) return -1;
-    QueueElement* temp = q->front;
-    int value = temp->value;
-    q->front = q->front->next;
-    if (q->front == NULL) q->rear = NULL;
-    free(temp);
-    return value;
-}
 
-void createAscendingQueue(Queue* q, int size) {
-    for (int i = 1; i <= size; i++) {
-        addToQueue(q, i);
+void fillIncQueue(tData** head, tData** tail, int n)
+{
+    for (int i = 1; i <= n; i++)
+    {
+        AddToQueue(head, tail, i);
     }
 }
 
-void createDescendingQueue(Queue* q, int size) {
-    for (int i = size; i >= 1; i--) {
-        addToQueue(q, i);
+
+void fillDecQueue(tData** head, tData** tail, int n)
+{
+    for (int i = n; i >= 1; i--)
+    {
+        AddToQueue(head, tail, i);
     }
 }
 
-void createRandomQueue(Queue* q, int size, int min, int max) {
+void fillRanQueue(tData** head, tData** tail, int n)
+{
     srand(time(NULL));
-    for (int i = 0; i < size; i++) {
-        int num = min + rand() % (max - min + 1);
-        addToQueue(q, num);
+    for (int i = 1; i <= n; i++)
+    {
+        int ranNum = rand() % 100;
+        AddToQueue(head, tail, ranNum);
     }
 }
 
-void addToList(ListElement** head, int value) {
-    ListElement* newElement = (ListElement*)malloc(sizeof(ListElement));
-    newElement->value = value;
-    newElement->next = *head;
-    *head = newElement;
+void delStackElement(tData** head)
+{
+    if (head != NULL)
+    {
+        tData *p = *head;
+        *head = p->next;
+        free(p);
+    }
 }
 
-void displayList(ListElement* head) {
-    ListElement* current = head;
-    while (current != NULL) {
-        printf("%d ", current->value);
-        current = current->next;
+void print_list(tData *head)
+{
+    tData *p = head;
+    while (p != NULL)
+    {
+        printf("%d ", p->data);
+        p = p->next;
     }
     printf("\n");
 }
 
-int computeSum(ListElement* head) {
+int checksum(tData *head)
+{
     int sum = 0;
-    ListElement* current = head;
-    while (current != NULL) {
-        sum += current->value;
-        current = current->next;
+    tData *p = head;
+    while (p != NULL)
+    {
+        sum += p->data;
+        p = p->next;
     }
     return sum;
 }
 
-int countSequences(ListElement* head) {
-    if (head == NULL) return 0;
+int count_series(tData *head)
+{
+    if (head == NULL)
+    {
+        return 0;
+    }
+
     int count = 1;
-    ListElement* current = head;
-    
-    while (current->next != NULL) {
-        if (current->value > current->next->value) {
+    tData *p = head;
+
+    while (p->next != NULL)
+    {
+        if (p->data > p->next->data)
+        {
             count++;
         }
-        current = current->next;
+        p = p->next;
     }
     return count;
 }
 
-ListElement* convertStackToList(StackElement* head) {
-    ListElement* list = NULL;
-    StackElement* current = head;
-    while (current != NULL) {
-        addToList(&list, current->value);
-        current = current->next;
-    }
-    return list;
-}
-
-ListElement* convertQueueToList(Queue* q) {
-    ListElement* list = NULL;
-    QueueElement* current = q->front;
-    while (current != NULL) {
-        addToList(&list, current->value);
-        current = current->next;
-    }
-    return list;
-}
-
-void clearStack(StackElement** head) {
-    while (*head != NULL) {
-        removeFromStack(head);
-    }
-}
-
-void clearQueue(Queue* q) {
-    while (q->front != NULL) {
-        removeFromQueue(q);
-    }
-}
-
-void clearList(ListElement** head) {
-    ListElement* current = *head;
-    while (current != NULL) {
-        ListElement* next = current->next;
-        free(current);
-        current = next;
-    }
-    *head = NULL;
-}
-
-void displayStack(StackElement* head) {
-    StackElement* current = head;
-    while (current != NULL) {
-        printf("%d ", current->value);
-        current = current->next;
+void clear(tData *head)
+{
+    tData *p = head;
+    while (p != NULL)
+    {
+        tData *temp_p = p;
+        p=p->next;
+        free(temp_p);
     }
     printf("\n");
 }
 
-void displayQueue(Queue* q) {
-    QueueElement* current = q->front;
-    while (current != NULL) {
-        printf("%d ", current->value);
-        current = current->next;
+void printForwardRecursive(tData *head)
+{
+    if (head == NULL) {
+        printf("\n");
+        return;
     }
-    printf("\n");
+    printf("%d ", head->data);
+    printForwardRecursive(head->next);
 }
+
+void printBackwardRecursive(tData *head)
+{
+    if (head == NULL) {
+        return;
+    }
+    printBackwardRecursive(head->next);
+    printf("%d ", head->data);
+}
+
 
 int main() {
-    int stackSize = 10; 
-    int maxRandom = 10; 
+    tData* stack_head = NULL;
+    fillIncStack(&stack_head, N);
+    printf("Стек (убывающий): ");
+    print_list(stack_head);
+    printf("Контрольная сумма: %d\n", checksum(stack_head));
+    printf("Количество серий: %d\n", count_series(stack_head));
+    clear(stack_head);
 
-    printf("Стеки\n");
-    
-    StackElement* stack = NULL;
-    createAscendingStack(&stack, stackSize);
-    printf("Стек (возрастающие числа): ");
-    displayStack(stack);
-    
-    ListElement* stackList = convertStackToList(stack);
-    printf("Контрольная сумма: %d\n", computeSum(stackList));
-    printf("Количество серий: %d\n", countSequences(stackList));
-    clearList(&stackList);
-    clearStack(&stack);
+    stack_head = NULL;
+    fillDecStack(&stack_head, N);
+    printf("Стек (возрастающий): ");
+    print_list(stack_head);
+    printf("Контрольная сумма: %d\n", checksum(stack_head));
+    printf("Количество серий: %d\n", count_series(stack_head));
+    clear(stack_head);
 
-    createDescendingStack(&stack, stackSize);
-    printf("\nСтек (убывающие числа): ");
-    displayStack(stack);
-    
-    stackList = convertStackToList(stack);
-    printf("Контрольная сумма: %d\n", computeSum(stackList));
-    printf("Количество серий: %d\n", countSequences(stackList)); 
-    clearList(&stackList);
-    clearStack(&stack);
+    stack_head = NULL;
+    fillRanStack(&stack_head, N);
+    printf("Стек (Случайный): ");
+    print_list(stack_head);
+    printf("Контрольная сумма: %d\n", checksum(stack_head));
+    printf("Количество серий: %d\n", count_series(stack_head));
+    clear(stack_head);
 
-    createRandomStack(&stack, stackSize, 1, maxRandom);
-    printf("\nСтек (случайные числа): ");
-    displayStack(stack);
-    
-    stackList = convertStackToList(stack);
-    printf("Контрольная сумма: %d\n", computeSum(stackList));
-    printf("Количество серий: %d\n", countSequences(stackList));
-    clearList(&stackList);
-    clearStack(&stack);
+    tData* queue_head = NULL, *queue_tail = NULL;
+    fillIncQueue(&queue_head, &queue_tail, N);
+    printf("Очередь(возрастающая): ");
+    print_list(queue_head);
+    printf("Контрольная сумма: %d\n", checksum(queue_head));
+    printf("Количество серий: %d\n", count_series(queue_head));
+    clear(queue_head);
 
-    printf("\nОчереди\n");
-    
-    Queue queue = {NULL, NULL};
-    
-    createAscendingQueue(&queue, stackSize);
-    printf("Очередь (возрастающие числа): ");
-    displayQueue(&queue);
-    
-    ListElement* queueList = convertQueueToList(&queue);
-    printf("Контрольная сумма: %d\n", computeSum(queueList));
-    printf("Количество серий: %d\n", countSequences(queueList));
-    clearList(&queueList);
-    clearQueue(&queue);
+    queue_head = NULL;
+    queue_tail = NULL;
+    fillDecQueue(&queue_head, &queue_tail, N);
+    printf("Очередь (убывающая): ");
+    print_list(queue_head);
+    printf("Контрольная сумма: %d\n", checksum(queue_head));
+    printf("Количество серий: %d\n", count_series(queue_head));
+    clear(queue_head);
 
-    createDescendingQueue(&queue, stackSize);
-    printf("\nОчередь (убывающие числа): ");
-    displayQueue(&queue);
-    
-    queueList = convertQueueToList(&queue);
-    printf("Контрольная сумма: %d\n", computeSum(queueList));
-    printf("Количество серий: %d\n", countSequences(queueList));
-    clearList(&queueList);
-    clearQueue(&queue);
+    queue_head = NULL; 
+    queue_tail = NULL;
+    fillRanQueue(&queue_head, &queue_tail, N);
+    printf("Очередь(случайная): ");
+    print_list(queue_head);
+    printf("Контрольная сумма: %d\n", checksum(queue_head));
+    printf("Количество серий: %d\n", count_series(queue_head));
+    clear(queue_head);
 
-    createRandomQueue(&queue, stackSize, 1, maxRandom);
-    printf("\nОчередь (случайные числа): ");
-    displayQueue(&queue);
-    
-    queueList = convertQueueToList(&queue);
-    printf("Контрольная сумма: %d\n", computeSum(queueList));
-    printf("Количество серий: %d\n", countSequences(queueList));
-    clearList(&queueList);
-    clearQueue(&queue);
-    printf("\nСписки\n");
-    
-    ListElement* list = NULL;
-    addToList(&list, 4);
-    addToList(&list, 4);
-    addToList(&list, 2);
-    addToList(&list, 8);
-    addToList(&list, 5);
-    addToList(&list, 9);
-    addToList(&list, 1);
-    
-    printf("Список: ");
-    displayList(list); 
-    
-    printf("Контрольная сумма: %d\n", computeSum(list));
-    printf("Количество серий: %d\n", countSequences(list)); 
-    
-    clearList(&list);
-    
+    queue_head = NULL;
+    queue_tail = NULL;
+    fillRanQueue(&queue_head, &queue_tail, N);
+
+    printf("Очередь в прямом порядке: ");
+    printForwardRecursive(queue_head);
+
+    printf("Очередь в обратном порядке: ");
+    printBackwardRecursive(queue_head);
+    printf("\n");
+
+    clear(queue_head);
+
     return 0;
 }
