@@ -37,7 +37,8 @@ int main() {
     return 0;
 }
 ```
-![Вывод потока](Lab/1 курс 2 семестр/1 курс 2 семестр/Lessons 07/img/image.png)
+<img src="img/image.png" width ="300">
+
 2) Задаем параметры потока
 ```c
 void* thread_func_params(void* arg) {
