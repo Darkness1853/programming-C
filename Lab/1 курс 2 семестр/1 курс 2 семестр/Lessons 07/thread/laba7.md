@@ -37,7 +37,7 @@ int main() {
     return 0;
 }
 ```
-![Вывод потока](image.png)
+![Вывод потока](https://github.com/ваш-username/ваш-репозиторий/raw/main/Lab/1%20курс%202%20семестр/Lessons%2007/img/image.png)
 2) Задаем параметры потока
 ```c
 void* thread_func_params(void* arg) {
@@ -59,7 +59,7 @@ char* lines1[] = {"Поток 1: строка 1", "Поток 1: строка 2"
     pthread_join(threads[0], NULL);
     pthread_join(threads[1], NULL);
 ```
-![Вывод потока](image1.png)
+![Вывод потока](https://github.com/ваш-username/ваш-репозиторий/raw/main/Lab/1%20курс%202%20семестр/Lessons%2007/img/image1.png)
 3) Дочерний поток перед завершением распечатывает сообщение
 ```c
 void cleanup(void* arg) {
@@ -82,7 +82,7 @@ void* thread_func_cleanup(void* arg) {
     pthread_cancel(thread); 
     pthread_join(thread, NULL);
 ```
-![Работа потока перед отменой](image2.png)
+![Работа потока перед отменой](https://github.com/ваш-username/ваш-репозиторий/raw/main/Lab/1%20курс%202%20семестр/Lessons%2007/img/image2.png)
 4) Создание Sleepsort
 ```c
 void* sleepsort(void* arg) {
@@ -108,7 +108,7 @@ int arr[] = {3, 1, 4, 2};
 
     return 0;
 ```
-![Результат сортировки](image3.png)
+![Результат сортировки](https://github.com/ваш-username/ваш-репозиторий/raw/main/Lab/1%20курс%202%20семестр/Lessons%2007/img/image3.png)
 
 ---
 
@@ -177,9 +177,9 @@ current_turn = (current_turn + 1) % (actual_threads + 1);
 pthread_cond_broadcast(&cond);
 pthread_mutex_unlock(&mutex);
 ```
-![Запуск в gdb](image4.png)
+![Запуск в gdb](https://github.com/ваш-username/ваш-репозиторий/raw/main/Lab/1%20курс%202%20семестр/Lessons%2007/img/image4.png)
 4) Вывод графика Зависимости времени выполнения от размера матрицы и количества потоков на Python.
-![График на python](imag5.png)
+![График на python](https://github.com/ваш-username/ваш-репозиторий/raw/main/Lab/1%20курс%202%20семестр/Lessons%2007/img/image5.png)
 Обьяснение:
 1) Тратиться много времени на создание потоков, каждый поток требует времени на его создание и закрытие
 2) Невыгодное распределение работы между потоками:
