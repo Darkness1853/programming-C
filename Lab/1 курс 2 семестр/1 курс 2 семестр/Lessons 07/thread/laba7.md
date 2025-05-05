@@ -37,7 +37,8 @@ int main() {
     return 0;
 }
 ```
-<img src="img/image.png" width ="300">
+
+![Вывод потока](../img/image.png){: width="300"}
 
 2) Задаем параметры потока
 ```c
