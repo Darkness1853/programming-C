@@ -37,7 +37,7 @@ int main() {
     return 0;
 }
 ```
-![Вывод потока](https://github.com/ваш-username/ваш-репозиторий/raw/main/Lab/1%20курс%202%20семестр/Lessons%2007/img/image.png)
+![Вывод потока](Lab/1 курс 2 семестр/1 курс 2 семестр/Lessons 07/img/image.png)
 2) Задаем параметры потока
 ```c
 void* thread_func_params(void* arg) {
