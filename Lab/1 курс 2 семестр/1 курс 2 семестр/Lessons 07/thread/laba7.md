@@ -39,6 +39,7 @@ int main() {
 ```
 
 ![Вывод потока](../img/image.png)
+
 2) Задаем параметры потока
 ```c
 void* thread_func_params(void* arg) {
@@ -60,7 +61,9 @@ char* lines1[] = {"Поток 1: строка 1", "Поток 1: строка 2"
     pthread_join(threads[0], NULL);
     pthread_join(threads[1], NULL);
 ```
+
 ![Вывод потока](../img/image2.png)
+
 3) Дочерний поток перед завершением распечатывает сообщение
 ```c
 void cleanup(void* arg) {
@@ -83,7 +86,9 @@ void* thread_func_cleanup(void* arg) {
     pthread_cancel(thread); 
     pthread_join(thread, NULL);
 ```
+
 ![Работа потока перед отменой](../img/image3.png)
+
 4) Создание Sleepsort
 ```c
 void* sleepsort(void* arg) {
@@ -109,7 +114,9 @@ int arr[] = {3, 1, 4, 2};
 
     return 0;
 ```
+
 ![Результат сортировки](../img/image3.png)
+
 ---
 
 ## На оценку 4.
@@ -177,8 +184,11 @@ current_turn = (current_turn + 1) % (actual_threads + 1);
 pthread_cond_broadcast(&cond);
 pthread_mutex_unlock(&mutex);
 ```
+
 ![Запуск в gdb](../img/image4.png)
+
 4) Вывод графика Зависимости времени выполнения от размера матрицы и количества потоков на Python.
+
 ![График на python](../img/image5.png)
 Обьяснение:
 1) Тратиться много времени на создание потоков, каждый поток требует времени на его создание и закрытие
