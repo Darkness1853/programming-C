@@ -8,6 +8,9 @@
 int N, threads;
 int A[MAX_N][MAX_N], B[MAX_N][MAX_N], C[MAX_N][MAX_N];
 
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
+int current_turn = 0; 
 typedef struct {
     int start_row;
     int end_row;
@@ -16,6 +19,14 @@ typedef struct {
 
 void* multiply(void* arg) {
     ThreadData* data = (ThreadData*)arg;
+    
+    // Ожидание очереди
+    pthread_mutex_lock(&mutex);
+    while (current_turn != data->thread_id) {
+        pthread_cond_wait(&cond, &mutex);
+    }
+    pthread_mutex_unlock(&mutex);
+
     for (int i = data->start_row; i < data->end_row; i++) {
         for (int j = 0; j < N; j++) {
             C[i][j] = 0;
@@ -24,10 +35,23 @@ void* multiply(void* arg) {
             }
         }
     }
+
+    pthread_mutex_lock(&mutex);
+    current_turn = (current_turn + 1) % threads;
+    pthread_cond_broadcast(&cond);
+    pthread_mutex_unlock(&mutex);
+
     return NULL;
 }
 
 void multiply_remaining(int start_row, int end_row) {
+    // Ожидание своей очереди 
+    pthread_mutex_lock(&mutex);
+    while (current_turn != threads) {
+        pthread_cond_wait(&cond, &mutex);
+    }
+    pthread_mutex_unlock(&mutex);
+
     for (int i = start_row; i < end_row; i++) {
         for (int j = 0; j < N; j++) {
             C[i][j] = 0;
@@ -36,6 +60,11 @@ void multiply_remaining(int start_row, int end_row) {
             }
         }
     }
+
+    pthread_mutex_lock(&mutex);
+    current_turn = (current_turn + 1) % (threads + 1);
+    pthread_cond_broadcast(&cond);
+    pthread_mutex_unlock(&mutex);
 }
 
 int main(int argc, char* argv[]) {
@@ -48,12 +77,8 @@ int main(int argc, char* argv[]) {
     threads = atoi(argv[2]);
 
     // Проверка и корректировка количества потоков
-    if (threads > N) {
-        threads = N;
-    }
-    if (threads < 1) {
-        threads = 1;
-    }
+    if (threads > N) threads = N;
+    if (threads < 1) threads = 1;
 
     // Заполнение матриц единицами
     for (int i = 0; i < N; i++) {
@@ -68,7 +93,7 @@ int main(int argc, char* argv[]) {
     ThreadData thread_data[threads];
     int rows_per_thread = N / threads;
     int remaining_rows = N % threads;
-    int current_row = 0;  
+    int current_row = 0;
 
     clock_t start = clock();
 
@@ -76,16 +101,10 @@ int main(int argc, char* argv[]) {
     for (int i = 0; i < threads; i++) {
         thread_data[i].start_row = current_row;
         thread_data[i].end_row = current_row + rows_per_thread;
-        if (i < remaining_rows) {
-            thread_data[i].end_row += 1;
-        }
+        if (i < remaining_rows) thread_data[i].end_row += 1;
         thread_data[i].thread_id = i;
         
-        if (pthread_create(&thread_ids[i], NULL, multiply, &thread_data[i]) != 0) {
-            perror("Ошибка создания потока");
-            return 1;
-        }
-        
+        pthread_create(&thread_ids[i], NULL, multiply, &thread_data[i]);
         current_row = thread_data[i].end_row;
     }
 
@@ -104,6 +123,7 @@ int main(int argc, char* argv[]) {
     double time_spent = (double)(end - start) / CLOCKS_PER_SEC;
     printf("Время выполнения: %f сек.\n", time_spent);
 
+    // Вывод матриц (если N <= 5)
     if (N <= 5) {
         printf("Матрица A:\n");
         for (int i = 0; i < N; i++) {
@@ -124,4 +144,4 @@ int main(int argc, char* argv[]) {
 
     return 0;
 }
-//gcc -pthread task2.c -o task2 && ./task2 8 4
+//gcc -lpthread task2.c -o task2 && ./task2 8 4
