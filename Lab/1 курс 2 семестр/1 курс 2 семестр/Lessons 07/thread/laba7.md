@@ -143,7 +143,6 @@ int arr[] = {3, 1, 4, 2};
 <a name='На-оценку-4'></a>На оценку 4
 <a name='Тема-Перемножение-матриц'></a>Тема: Перемножение матриц
 <a name='Цель-работы-1'></a>Цель работы:
-- Синхронизирование вывода
 - Перемножение квадратных матриц NxN
 - Замеры времени выполнения (с момента создания потоков и до завершения работы потоков)
 - Построение графика в python
@@ -167,58 +166,27 @@ void* multiply(void* arg) {
 ```
 2) Замер времени выполнения программы
 ```c
-    clock_t start = clock();
+gettimeofday(&start, NULL);
 
-    int current_row = 0;
-    for (int i = 0; i < actual_threads; i++) {
-        thread_data[i].start_row = current_row;
-        thread_data[i].end_row = current_row + rows_per_thread + (i < remaining_rows ? 1 : 0);
-        thread_data[i].thread_id = i;
-        
-        if (pthread_create(&threads[i], NULL, multiply, &thread_data[i]) != 0) {
-            fprintf(stderr, "Ошибка создания потока %d\n", i);
-            actual_threads = i;  
-            break;
-        }
-        
-        current_row = thread_data[i].end_row;
-    }
+for (i = 0; i < threads; i++) pthread_create(...);
+for (i = 0; i < threads; i++) pthread_join(...);
 
-    for (int i = 0; i < actual_threads; i++) {
-        pthread_join(threads[i], NULL);
-    }
-
-    clock_t end = clock();
-    double time_spent = (double)(end - start) / CLOCKS_PER_SEC;
+gettimeofday(&end, NULL);
 ```
-3) Синхронизированный вывод c помощью mutex
-```c
-pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
-pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
-int current_turn = 0;
-//...
-pthread_mutex_lock(&mutex);
-while (current_turn != 0) {
-    pthread_cond_wait(&cond, &mutex);
-}
-printf("Основной поток: обработал строку %d\n", row);
-current_turn = (current_turn + 1) % (actual_threads + 1);
-pthread_cond_broadcast(&cond);
-pthread_mutex_unlock(&mutex);
-```
+3) Просмотр выполнения алгоритма через gdb
 
 ![Запуск в gdb](../img/image4.png)
 
 <a name='Приложения'></a>Приложения
 
 4) Вывод графика Зависимости времени выполнения от размера матрицы и количества потоков на Python.
-
 ![График на python](../img/image5.png)
 Обьяснение:
-1) Тратиться много времени на создание потоков, каждый поток требует времени на его создание и закрытие
-2) Невыгодное распределение работы между потоками:
-Чем меньше количества элементов в матрице, и чем больше потоков, тем медленне работает программа.
-Пример: при N =100 и 16 потоков, каждый поток обрабатывает 6-7 строк
+1) Программа работает параллельно. При умножении матриц каждая строка результирующей матрицы вычисляется независимо
+2) Происходит распределение работы между потоками:
+Чем чем больше потоков, тем быстрее работает программа.
+Пример: при N =100 и 16 потоков, каждый поток обрабатывает 6-7 строк за одну секунду
+Дальнейшее увеличение даёт минимальный прирост к скорости обработки.
 
 <a name='Ссылка-на-программу'></a>Ссылка на программу:
 
