@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/inverse_matrix.dir/src/matrix.c.o CMakeFiles/inverse_matrix.dir/main.c.o -o inverse_matrix  -lm 

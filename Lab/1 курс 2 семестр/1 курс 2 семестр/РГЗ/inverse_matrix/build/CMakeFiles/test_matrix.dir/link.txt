@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/test_matrix.dir/src/matrix.c.o CMakeFiles/test_matrix.dir/tests/test_matrix.c.o -o test_matrix  -lm 
