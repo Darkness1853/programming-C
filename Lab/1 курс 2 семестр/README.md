@@ -10,6 +10,7 @@
 - Гибридные (Java, C#)
   
 [Ссылка на доп. материал](https://habr.com/ru/articles/539784/)
+
 [Примеры](https://github.com/Darkness1853/programming-C/tree/2e5ed557e7d047633101c0941a6ee4e6b44c8e11/Lab/1%20%D0%BA%D1%83%D1%80%D1%81%202%20%D1%81%D0%B5%D0%BC%D0%B5%D1%81%D1%82%D1%80/1%20%D0%BA%D1%83%D1%80%D1%81%201%20%D1%81%D0%B5%D0%BC%D0%B5%D1%81%D1%82%D1%80/Lessons%2001)
 
 **Пример на C**:
@@ -34,7 +35,10 @@ int main() {
 3. Ассемблирование (`gcc -c`)
 4. Линковка (`gcc`)
 
+[Примеры](https://github.com/Darkness1853/programming-C/tree/b755f8041c3154178142c4c9dea0bdb539059298/Lab/1%20%D0%BA%D1%83%D1%80%D1%81%202%20%D1%81%D0%B5%D0%BC%D0%B5%D1%81%D1%82%D1%80/1%20%D0%BA%D1%83%D1%80%D1%81%201%20%D1%81%D0%B5%D0%BC%D0%B5%D1%81%D1%82%D1%80/Lessons%2002)
+
 [Ссылка на доп. материал](https://metanit.com/c/tutorial/3.1.php)
+
 **Пример**:
 ```c
 // hello.c
@@ -49,7 +53,9 @@ int main() {
 ### 4. Типы данных и вывод.
 Классификация данных, которые может обрабатывать программа.
 
+
 [Ссылка на доп. материал](https://younglinux.info/c/printf)
+
 **Базовые типы**:
 ```c
 int age = 20;           // Целое
@@ -58,6 +64,8 @@ char letter = 'A';      // Символ
 ```
 ### 5. Операторы и условия.
 Конструкции для развлетвления логики программы.
+
+[Примеры](https://github.com/Darkness1853/programming-C/tree/b755f8041c3154178142c4c9dea0bdb539059298/Lab/1%20%D0%BA%D1%83%D1%80%D1%81%202%20%D1%81%D0%B5%D0%BC%D0%B5%D1%81%D1%82%D1%80/1%20%D0%BA%D1%83%D1%80%D1%81%201%20%D1%81%D0%B5%D0%BC%D0%B5%D1%81%D1%82%D1%80/Lessons%2003)
 
 [Ссылка на доп. материал](https://metanit.com/c/tutorial/2.7.php)
 **Пример условий**:
@@ -73,6 +81,8 @@ if (x > 5) {
 ### 6. Циклы.
 Повторение блока кода.
 
+[Примеры](https://github.com/Darkness1853/programming-C/tree/b755f8041c3154178142c4c9dea0bdb539059298/Lab/1%20%D0%BA%D1%83%D1%80%D1%81%202%20%D1%81%D0%B5%D0%BC%D0%B5%D1%81%D1%82%D1%80/1%20%D0%BA%D1%83%D1%80%D1%81%201%20%D1%81%D0%B5%D0%BC%D0%B5%D1%81%D1%82%D1%80/Lessons%2007)
+
 [Ссылка на доп. материал](ttps://prog-cpp.ru/c-cycles/)
 **Пример for**:
 ```c
@@ -84,6 +94,7 @@ for (int i = 0; i < 5; i++) {
 ### 7. Битовые операции.
 Работа с данными на уровне битов.
 
+
 [Ссылка на доп. материал](https://proproprogs.ru/c_base/c_bitovye-operacii-i-ili-ne-xor-sdvigovye-operacii)
 ```c
 unsigned char a = 0b1010;  // 10
@@ -93,6 +104,7 @@ unsigned char c = a & b;   // 0b1000 (8)
 
 ### 8. Массивы и указатели.
 Хранение наборов данных и работа с адресами памяти.
+
 
 [Ссылка на доп. материал](https://metanit.com/c/tutorial/5.5.php)
 ```c
@@ -129,6 +141,8 @@ Point p = {10, 20};
 В зависимости от встроенных возможностей, отладчик позволяет выполнять трассировку, отслеживать, устанавливать или изменять значения переменных в процессе выполнения кода,
 устанавливать и удалять точки останова или условия остановки, выводить стек и кадры функций, перемещаться между потоками в многопоточной программе и т.д. 
 
+[Примеры](
+
 [Ссылка на github моего преподавателя](https://github.com/kruffka/C-Programming/blob/master/2024-2025/debug_gdb_valgrind/8_GDB.md)
 
 **GDB команды**:
@@ -156,7 +170,10 @@ project/
 
 ### 1. Алгоритмы и списки.
 
+[Пример](https://github.com/Darkness1853/programming-C/blob/b755f8041c3154178142c4c9dea0bdb539059298/Lab/1%20%D0%BA%D1%83%D1%80%D1%81%202%20%D1%81%D0%B5%D0%BC%D0%B5%D1%81%D1%82%D1%80/1%20%D0%BA%D1%83%D1%80%D1%81%202%20%D1%81%D0%B5%D0%BC%D0%B5%D1%81%D1%82%D1%80/Lessons%2002/task%202)
+
 [Ссылка на доп. материал](https://tproger.ru/translations/linked-list-for-beginners)
+
 **Связный список**:
 ```c
 struct Node {
@@ -167,8 +184,10 @@ struct Node {
 
 ### 2. Работа с файлами.
 
+
 [Ссылка на доп. материал](https://itproger.com/course/c-programming/9#:~:text=%D0%97%D0%B0%20%D1%81%D1%87%D1%91%D1%82%20%D1%8F%D0%B7%D1%8B%D0%BA%D0%B0%20%D0%A1%D0%B8%20%D0%B2%D1%8B%20%D0%BC%D0%BE%D0%B6%D0%B5%D1%82%D0%B5%20%D1%81%20%D0%BB%D0%B5%D0%B3%D0%BA%D0%BE%D1%81%D1%82%D1%8C%D1%8E,%D0%BA%D0%BB%D0%B0%D1%81%D1%81%D1%8B%20%D0%B4%D0%BB%D1%8F%20%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B%20%D1%81%20%D1%84%D0%B0%D0%B9%D0%BB%D0%B0%D0%BC%D0%B8%20%D0%B8%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B8%D1%8F%D0%BC%D0%B8%20%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0.)
-**Чтение файла**:
+
+**Чтение текстового файла**:
 ```c
 FILE *f = fopen("file.txt", "r");
 char buffer[100];
@@ -176,18 +195,40 @@ fgets(buffer, 100, f);
 fclose(f);
 ```
 
+**Чтение текстового файла**:
+```c
+FILE *f = fopen("file.txt", "rb");
+char buffer[100];
+fgets(buffer, 100, f);
+fclose(f);
+```
+
+[Пример](https://github.com/Darkness1853/programming-C/blob/b755f8041c3154178142c4c9dea0bdb539059298/Lab/1%20%D0%BA%D1%83%D1%80%D1%81%202%20%D1%81%D0%B5%D0%BC%D0%B5%D1%81%D1%82%D1%80/1%20%D0%BA%D1%83%D1%80%D1%81%202%20%D1%81%D0%B5%D0%BC%D0%B5%D1%81%D1%82%D1%80/Lessons%2005/task%205)
+
 ### 3. Библиотеки.
 **Создание статической библиотеки**:
 
+
 [Ссылка на доп. материал](https://younglinux.info/c/library)
+
 ```bash
 gcc -c lib.c -o lib.o
 ar rcs lib.a lib.o
 ```
+Для динамических библиотек
+```c
+# Компиляция программы с динамической библиотекой
+gcc program.c -L. -lname -o program
 
+# Перед запуском нужно указать путь к библиотеке
+export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH
+./program
+```
 ### 4. Git и GitHub.
 
+
 [Документация из GitHub](https://docs.github.com/ru/get-started/learning-to-code/getting-started-with-git)
+
 [Ссылка на мой файл с командами для управления GitHub]()
 **Основные команды**:
 ```bash
@@ -199,8 +240,12 @@ git push origin main
 
 ### 5. Многопоточность (POSIX).
 
+[Примеры](https://github.com/Darkness1853/programming-C/tree/b755f8041c3154178142c4c9dea0bdb539059298/Lab/1%20%D0%BA%D1%83%D1%80%D1%81%202%20%D1%81%D0%B5%D0%BC%D0%B5%D1%81%D1%82%D1%80/1%20%D0%BA%D1%83%D1%80%D1%81%202%20%D1%81%D0%B5%D0%BC%D0%B5%D1%81%D1%82%D1%80/Lessons%2007/thread)
+
 [Ссылка на доп. материал](https://habr.com/ru/articles/881444/)
+
 [Ссылка на мой файл с командами для управления GitHub]()
+
 ```c
 #include <pthread.h>
 void* thread_func(void* arg) {
@@ -213,6 +258,8 @@ pthread_create(&thread, NULL, thread_func, NULL);
 
 ### 6. Тестирование.
 **Пример unit-теста**:
+
+[Примеры](
 
 [Ссылка на доп. материал](https://habr.com/ru/articles/244835/)
 ```c
