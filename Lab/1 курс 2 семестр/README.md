@@ -10,6 +10,7 @@
 - Гибридные (Java, C#)
   
 [Ссылка на доп. материал](https://habr.com/ru/articles/539784/)
+[Примеры](https://github.com/Darkness1853/programming-C/tree/2e5ed557e7d047633101c0941a6ee4e6b44c8e11/Lab/1%20%D0%BA%D1%83%D1%80%D1%81%202%20%D1%81%D0%B5%D0%BC%D0%B5%D1%81%D1%82%D1%80/1%20%D0%BA%D1%83%D1%80%D1%81%201%20%D1%81%D0%B5%D0%BC%D0%B5%D1%81%D1%82%D1%80/Lessons%2001)
 
 **Пример на C**:
 ```c
