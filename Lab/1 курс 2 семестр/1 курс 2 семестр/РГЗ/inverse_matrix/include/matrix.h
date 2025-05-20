@@ -21,4 +21,4 @@ Matrix* copy_matrix(const Matrix* matrix);
 int multiply_matrices(const Matrix* a, const Matrix* b, Matrix* result);
 int are_matrices_equal(const Matrix* a, const Matrix* b, double epsilon);
 
-#endif // MATRIX_H
+#endif 

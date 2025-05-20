@@ -3,7 +3,7 @@ find_library(CMOCKA_LIBRARY cmocka)
 find_path(CMOCKA_INCLUDE_DIR cmocka.h)
 
 if(CMOCKA_LIBRARY AND CMOCKA_INCLUDE_DIR)
-    message(STATUS "Found cmocka: ${CMOCKA_LIBRARY}")
+    message(STATUS "Найден cmocka: ${CMOCKA_LIBRARY}")
     
     # Создаем тестовый исполняемый файл
     add_executable(test_matrix

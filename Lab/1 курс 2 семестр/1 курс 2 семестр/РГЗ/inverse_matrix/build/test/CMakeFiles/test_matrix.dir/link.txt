@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/test_matrix.dir/test_matrix.c.o CMakeFiles/test_matrix.dir/__/src/matrix.c.o -o test_matrix  /usr/lib/x86_64-linux-gnu/libcmocka.so 

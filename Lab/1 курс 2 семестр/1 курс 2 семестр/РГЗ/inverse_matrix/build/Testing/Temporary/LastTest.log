@@ -1,0 +1,33 @@
+Start testing: May 20 03:40 MSK
+----------------------------------------------------------
+1/1 Testing: matrix_tests
+1/1 Test: matrix_tests
+Command: "/mnt/c/Users/~Darr_Kness~/programming/ClassWork/inverse_matrix/build/test/test_matrix"
+Directory: /mnt/c/Users/~Darr_Kness~/programming/ClassWork/inverse_matrix/build/test
+"matrix_tests" start time: May 20 03:40 MSK
+Output:
+----------------------------------------------------------
+[==========] Running 6 test(s).
+[ RUN      ] test_create_and_free_matrix
+[       OK ] test_create_and_free_matrix
+[ RUN      ] test_is_matrix_square
+[       OK ] test_is_matrix_square
+[ RUN      ] test_create_identity_matrix
+[       OK ] test_create_identity_matrix
+[ RUN      ] test_copy_matrix
+[       OK ] test_copy_matrix
+[ RUN      ] test_inverse_matrix
+[       OK ] test_inverse_matrix
+[ RUN      ] test_singular_matrix
+[       OK ] test_singular_matrix
+[==========] 6 test(s) run.
+[  PASSED  ] 6 test(s).
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"matrix_tests" end time: May 20 03:40 MSK
+"matrix_tests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: May 20 03:40 MSK

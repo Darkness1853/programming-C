@@ -1,0 +1,8 @@
+/mnt/c/Users/~Darr_Kness~/programming/ClassWork/inverse_matrix/build/CMakeFiles/inverse_matrix.dir
+/mnt/c/Users/~Darr_Kness~/programming/ClassWork/inverse_matrix/build/CMakeFiles/test.dir
+/mnt/c/Users/~Darr_Kness~/programming/ClassWork/inverse_matrix/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/~Darr_Kness~/programming/ClassWork/inverse_matrix/build/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/~Darr_Kness~/programming/ClassWork/inverse_matrix/build/test/CMakeFiles/test_matrix.dir
+/mnt/c/Users/~Darr_Kness~/programming/ClassWork/inverse_matrix/build/test/CMakeFiles/test.dir
+/mnt/c/Users/~Darr_Kness~/programming/ClassWork/inverse_matrix/build/test/CMakeFiles/edit_cache.dir
+/mnt/c/Users/~Darr_Kness~/programming/ClassWork/inverse_matrix/build/test/CMakeFiles/rebuild_cache.dir
